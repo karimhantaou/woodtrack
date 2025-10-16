@@ -24,10 +24,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen w-screen flex bg-amber-50`}>
+        <header className={"h-screen w-40 navbar flex justify-center"}>
+          <div className={" w-full h-30 flex justify-center items-center"}>
+            <img src="/logo.png" alt="Logo" className="w-20" />
+          </div>
+
+        </header>
+        <div className={"w-screen"}>
+            <nav className={"w-full h-30 text-5xl flex items-center navbar"}>WoodTrack</nav>
+            {children}
+        </div>
       </body>
     </html>
   );
