@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WoodTracker
 
-## Getting Started
+WoodTracker est une application web permettant de gérer différents chargements de bois. Grâce à cette application, vous pouvez ajouter de nouveaux chargements en sélectionnant le client, le transport et les produits associés.
 
-First, run the development server:
+## Technologies utilisées
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Next.js** : Framework React pour construire des applications web modernes.
+- **Supabase** : Base de données et backend en temps réel.
+- **TypeScript** : Typage statique pour un code plus sûr.
+- **Tailwind CSS** : Framework CSS pour un design rapide et responsive.
+- **shadcn/ui** : Composants UI réutilisables pour Next.js.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Fonctionnalités
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Gestion des chargements existants.
+- Ajout de nouveaux chargements avec sélection de :
+    - Client
+    - Transport
+    - Produits
+- Interface intuitive et responsive.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation
 
-## Learn More
+1. **Installer Node.js**  
+   Assurez-vous d’avoir Node.js installé sur votre machine : [Node.js](https://nodejs.org/)
 
-To learn more about Next.js, take a look at the following resources:
+2. **Cloner le dépôt**
+   ```bash
+   git clone https://github.com/votre-utilisateur/WoodTracker.git
+   cd WoodTracker
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Installer les dépendances**
+    ```bash
+    npm install
+    ```
+4. **Lancer l'application en mode développement**
+    ```bash
+    npm run dev
+    ```
+5. **Accéder à l'application**
+    
+    Ouvrez votre navigateur et allez à l'adresse : `http://localhost:3000`
