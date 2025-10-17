@@ -1,37 +1,26 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MultiSelect } from "@/components/MultiSelect";
 import {fetchClients} from "@/lib/getClients";
 import {fetchTransports} from "@/lib/getTransports";
-import {fetchProduits} from "@/lib/getProduits";
-import {addChargement} from "@/lib/addChargements";
-import {addChargementProduit} from "@/lib/addChargementProduits";
+import {fetchProduits} from "@/lib/getProduits"
+import {submitForm} from "@/app/actions";
 
 const clients = await fetchClients();
 const transports = await fetchTransports();
 const produits = await fetchProduits();
 
-export default function ChargementForm({ onAddChargement, onClose }: any){
+export default function ChargementForm({onClose}: { onClose: () => void }){
 
     // Récupération des différents inputs
     const [clientId, setClientId] = useState<number>();
     const [transportId, setTransportId] = useState<number>();
     const [produitIds, setProduitIds] = useState<(number)[]>([]);
 
-    //Ajout d'un produit dans la table chargement_produits
-    async function addProduit(chargementId:number, produitId:number){
-        await addChargementProduit({chargement_id: chargementId, produit_id: produitId});
-    }
-
     // Formulaire soumit
     async function submit(){
-        const chargementId = await addChargement({client_id: clientId, transport_id: transportId});
-        if(chargementId != null){
-            produitIds.forEach((produit) => {
-                addProduit(chargementId, produit);
-            })
-        }
-        onAddChargement();
+        await submitForm(clientId, transportId, produitIds);
+        onClose();
     }
 
     return(
@@ -80,7 +69,7 @@ export default function ChargementForm({ onAddChargement, onClose }: any){
                         onChange={(values) => setProduitIds(values)}
                     />
                 </div>
-                <button type="submit" onClick={submit}>Créer Chargement</button>
+                <button onClick={submit}>Créer Chargement</button>
             </div>
         </div>
     )
