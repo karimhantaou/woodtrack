@@ -38,7 +38,7 @@ export default function RootLayout({
 
         </header>
         <div className={"w-screen"}>
-            <nav className={"w-full h-30 text-5xl flex items-center navbar"}>WoodTrack</nav>
+            <nav className={"w-full h-1/6 text-5xl flex items-center navbar"}>WoodTrack</nav>
             {children}
         </div>
       </body>

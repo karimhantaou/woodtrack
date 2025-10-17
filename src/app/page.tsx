@@ -1,21 +1,30 @@
 'use client'
 
-import {useState} from "react";
+import React, {useState} from "react";
 import { Button } from "@/components/ui/button";
 import {fetchChargements} from "@/lib/getChargements";
 
 import chargementsCard, {ChargementsCard} from "@/components/chargements-card";
 import ChargementForm from "@/components/chargement-form";
+import {SelectItem} from "@/components/ui/select";
+
+const chargements = fetchChargements();
 
 export default function Home() {
 
+    const [chargements, setChargements] = useState([])
     const [isOpen, setIsOpen] = useState(false)
 
-    return (
-        <div>
-            {isOpen && <ChargementForm onClose={() => setIsOpen(false)} />}
+    function handleAddChargement(){}
 
-            <h1>Chargements</h1>
+
+    return (
+        <div className={"flex justify-center items-center w-full h-5/6"}>
+            {isOpen && <ChargementForm onAddChargement={handleAddChargement} onClose={() => setIsOpen(false)} />}
+
+
+            <div className={"w-9/10 flex flex-col justify-evenly h-full"}>
+            <h1 className={"text-4xl"}>Chargements</h1>
 
             <div>
                 <Button
@@ -29,10 +38,11 @@ export default function Home() {
                 Nouveau chargement
             </div>
 
-            <div className={"flex flex-col items-center justify-center"}>
-                <ChargementsCard id={1} client={"Karim Hantaou"} transport={"Transport Alpha"} createdAt={"20/11/2025"} status={"0"}/>
-                <ChargementsCard id={2} client={"Sophie Martin"} transport={"Logistique Beta"} createdAt={"15/12/2025"} status={"1"}/>
-                <ChargementsCard id={3} client={"Ahmed Benali"} transport={"Express Gamma"} createdAt={"05/01/2026"} status={"2"}/>
+            <div className={"flex flex-col items-center justify-center overflow-x-scroll"}>
+                {chargements.map((chargement) => (
+                    <ChargementsCard key={chargement.id} id={chargement.id} client={chargement.client.nom + " " + chargement.client.prénom} transport={chargement.transport.nom} createdAt={chargement.created_at} status={"0"}/>
+            ))}
+            </div>
             </div>
         </div>
     );
