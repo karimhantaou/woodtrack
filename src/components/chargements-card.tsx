@@ -18,7 +18,7 @@ export const ChargementsCard: React.FC<ChargementsCardProps> = ({
   onAction,
 }) => {
   return (
-      <div className={"card grid grid-cols-5 items-center m-6 p-2 text-sm w-3/4"}>
+      <div className={"navbar grid grid-cols-5 items-center m-6 p-2 text-sm w-3/4"}>
           <ChargementInfo title={"ID"} text={id} onAction={onAction} />
           <ChargementInfo title={"Client"} text={client} onAction={onAction} />
           <ChargementInfo title={"Transport"} text={transport} onAction={onAction} />

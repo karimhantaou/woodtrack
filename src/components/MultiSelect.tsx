@@ -1,41 +1,35 @@
 "use client";
 
 import * as React from "react";
-import { Check, ChevronsUpDown, X } from "lucide-react";
+import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Badge } from "@/components/ui/badge";
 
-type Option = {
-    label: string;
-    value: string;
+type ProduitOption = {
+    id: string | number;
+    nom: string;
 };
 
 interface MultiSelectProps {
-    options: Option[];
+    produits: ProduitOption[];
     placeholder?: string;
-    onChange?: (values: string[]) => void;
+    onChange?: (ids: (string | number)[]) => void;
 }
 
-export function MultiSelect({ options, placeholder = "Select options...", onChange }: MultiSelectProps) {
+export function MultiSelect({ produits, placeholder = "Sélectionner des produits...", onChange }: MultiSelectProps) {
     const [open, setOpen] = React.useState(false);
-    const [selected, setSelected] = React.useState<Option[]>([]);
+    const [selected, setSelected] = React.useState<ProduitOption[]>([]);
 
-    const toggleOption = (option: Option) => {
-        const isSelected = selected.some((o) => o.value === option.value);
+    const toggleProduit = (produit: ProduitOption) => {
+        const isSelected = selected.some((p) => p.id === produit.id);
         const newSelected = isSelected
-            ? selected.filter((o) => o.value !== option.value)
-            : [...selected, option];
+            ? selected.filter((p) => p.id !== produit.id)
+            : [...selected, produit];
         setSelected(newSelected);
-        onChange?.(newSelected.map((o) => o.value));
-    };
-
-    const removeOption = (value: string) => {
-        const newSelected = selected.filter((o) => o.value !== value);
-        setSelected(newSelected);
-        onChange?.(newSelected.map((o) => o.value));
+        onChange?.(newSelected.map((p) => p.id));
     };
 
     return (
@@ -46,22 +40,18 @@ export function MultiSelect({ options, placeholder = "Select options...", onChan
                         variant="outline"
                         role="combobox"
                         aria-expanded={open}
-                        className="w-full justify-between"
+                        className="w-full justify-between overflow-hidden text-ellipsis whitespace-nowrap"
                     >
                         {selected.length > 0 ? (
-                            <div className="flex flex-wrap gap-1">
-                                {selected.map((option) => (
-                                    <Badge key={option.value} variant="secondary" className="flex items-center gap-1">
-                                        {option.label}
-                                        <X
-                                            className="h-3 w-3 cursor-pointer"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                removeOption(option.value);
-                                            }}
-                                        />
+                            <div className="flex flex-wrap gap-1 overflow-hidden">
+                                {selected.slice(0, 3).map((produit) => (
+                                    <Badge key={produit.id} variant="secondary">
+                                        {produit.nom}
                                     </Badge>
                                 ))}
+                                {selected.length > 3 && (
+                                    <Badge variant="secondary">+{selected.length - 3}</Badge>
+                                )}
                             </div>
                         ) : (
                             <span className="text-muted-foreground">{placeholder}</span>
@@ -71,23 +61,15 @@ export function MultiSelect({ options, placeholder = "Select options...", onChan
                 </PopoverTrigger>
                 <PopoverContent className="w-[300px] p-0">
                     <Command>
-                        <CommandInput placeholder="Search..." />
-                        <CommandEmpty>No options found.</CommandEmpty>
+                        <CommandInput placeholder="Rechercher..." />
+                        <CommandEmpty>Aucun produit trouvé.</CommandEmpty>
                         <CommandGroup>
-                            {options.map((option) => {
-                                const isSelected = selected.some((o) => o.value === option.value);
+                            {produits.map((produit) => {
+                                const isSelected = selected.some((p) => p.id === produit.id);
                                 return (
-                                    <CommandItem
-                                        key={option.value}
-                                        onSelect={() => toggleOption(option)}
-                                    >
-                                        <Check
-                                            className={cn(
-                                                "mr-2 h-4 w-4",
-                                                isSelected ? "opacity-100" : "opacity-0"
-                                            )}
-                                        />
-                                        {option.label}
+                                    <CommandItem key={produit.id} onSelect={() => toggleProduit(produit)}>
+                                        <Check className={cn("mr-2 h-4 w-4", isSelected ? "opacity-100" : "opacity-0")} />
+                                        {produit.nom}
                                     </CommandItem>
                                 );
                             })}
