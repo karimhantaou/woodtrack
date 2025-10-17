@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import localFont from 'next/font/local'
+
+const myFont = localFont({
+    src: '../assets/fonts/Nitti.ttf',
+})
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,8 +29,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen w-screen flex bg-amber-50`}>
+    <html lang="en" className={myFont.className}>
+      <body className={`antialiased h-screen w-screen flex bg-amber-50`}>
         <header className={"h-screen w-40 navbar flex justify-center"}>
           <div className={" w-full h-30 flex justify-center items-center"}>
             <img src="/logo.png" alt="Logo" className="w-20" />
