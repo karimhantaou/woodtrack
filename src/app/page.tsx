@@ -8,14 +8,18 @@ import {fetchChargements} from "@/lib/getChargements";
 
 export default function Home() {
 
+    // Variable useState qui serront mis à jours
     const [chargements, setChargements] = useState<any[]>([]);
     const [isOpen, setIsOpen] = useState(false)
 
+
+    // Fonction qui met à jour la liste des chargements
     async function loadChargements(){
         const data = await fetchChargements();
         setChargements(data);
     }
 
+    // UseEffect
     useEffect(() => {
         loadChargements();
     }, []);
@@ -23,6 +27,7 @@ export default function Home() {
 
     return (
         <div className="flex justify-center items-center w-full h-4/5 p-5">
+            {/* Formulaire d'ajout de chargement */}
             {isOpen && (
                 <ChargementForm
                     onClose={() => {
@@ -31,7 +36,6 @@ export default function Home() {
                     }}
                 />
             )}
-
             <div className="w-9/10 flex flex-col h-full">
                 <div className="flex items-center gap-2 text-black">
                     <p className={"text-4xl"}>Chargements</p>
@@ -41,6 +45,9 @@ export default function Home() {
                 <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700"/>
 
                 <div className="flex items-center gap-3 mb-4 ">
+
+                    {/* Bouton ouvrant le formulaire d'ajout de chargement */}
+
                     <Button
                         variant="outline"
                         size="icon"
@@ -57,6 +64,7 @@ export default function Home() {
                     {chargements.length == 0 ? (
                         <p className={"w-full h-full flex justify-center items-center"}>Aucun chargement disponible.</p>
                     ) : (
+
                         chargements.map((chargement) => (
                             <ChargementsCard
                                 key={chargement.id}

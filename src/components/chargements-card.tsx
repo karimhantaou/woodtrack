@@ -12,7 +12,7 @@ interface ChargementsCardProps {
   status: number;
 }
 
-
+// Function qui retourne l'intitulé du status du chargement
 function statusString(status:number){
     switch (status) {
         case 0: return "Préparation";
@@ -22,6 +22,7 @@ function statusString(status:number){
     }
 }
 
+// Paramètres
 export const ChargementsCard: React.FC<ChargementsCardProps> = ({
     id,
     client,
@@ -30,7 +31,8 @@ export const ChargementsCard: React.FC<ChargementsCardProps> = ({
     status,
 }) => {
 
-const [isOpen, setIsOpen] = useState(false)
+    // Variable permettant d'ouvir ou fermer le popup des produits.
+    const [isOpen, setIsOpen] = useState(false)
 
   return (
       <div className={"bg-white text-black grid grid-cols-5 items-center p-2 text-sm w-full shadow-xl/20 rounded-2xl"}>

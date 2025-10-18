@@ -2,14 +2,14 @@ import {fetchChargementProduits} from "@/lib/getChargementProduits";
 import React, {useEffect, useState} from "react";
 import { Button } from "@/components/ui/button"
 
+// Paramètre
 interface produitsProps {
     id: number;
 }
 
 export default function Produits({ id, onClose }: { id: number; onClose: () => void }) {
 
-    console.log(id)
-
+    // Liste des produits
     const [produits, setProduits] = useState<any[]>([]);
 
     async function loadChargements(){

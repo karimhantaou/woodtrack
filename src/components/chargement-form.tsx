@@ -8,6 +8,7 @@ import {submitForm} from "@/app/actions";
 import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
 
+// Récupération des différents élements à afficher dans les selects du formulaire
 const clients = await fetchClients();
 const transports = await fetchTransports();
 const produits = await fetchProduits();
@@ -19,9 +20,11 @@ export default function ChargementForm({onClose}: { onClose: () => void }){
     const [transportId, setTransportId] = useState<number>();
     const [produitIds, setProduitIds] = useState<(number)[]>([]);
 
-    // Formulaire soumit
+    // Formulaire submit
     async function submit() {
+        // Si les inputs ne sont pas tous remplis
         if (!clientId || !transportId || produitIds.length === 0) {
+            // Affichage d'une notification
             toast("Merci de remplir touts les champs.")
             return;
         }

@@ -6,6 +6,7 @@ interface ChargementInfoProps {
 
 }
 
+// Paramètres
 export const ChargementInfo: React.FC<ChargementInfoProps> = ({
     title,
     text,
