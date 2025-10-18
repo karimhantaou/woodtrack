@@ -35,17 +35,19 @@ export const ChargementsCard: React.FC<ChargementsCardProps> = ({
     const [isOpen, setIsOpen] = useState(false)
 
   return (
-      <div className={"bg-stone-100 text-black grid grid-cols-5 items-center p-2 text-sm w-full shadow-xl/20 rounded-2xl"}>
-          {isOpen && <Produits id={id} onClose={() => {setIsOpen(false)}}/>}
-          <p className={"w-full flex items-center justify-between"}>
-              Chargement {id}
-              <button className={"w-fit p-2 hover:bg-stone-700 border-b-1 hover:text-white rounded-2xl transition-all duration-300 shadow-xs"} onClick={() => setIsOpen(true)}>Produits</button>
+      <div className="bg-stone-100 text-black flex lg:flex-row flex-col items-center justify-between p-2 text-sm w-full shadow-xl/20 rounded-2xl gap-2 ">
+          {isOpen && <Produits id={id} onClose={() => setIsOpen(false)} />}
+          <p className="flex flex-col md:flex-row items-center justify-between gap-2 w-full">
+              <span>Chargement {id}</span>
+              <button className="w-1/2 sm:w-auto p-2 hover:bg-stone-700 border-b-1 hover:text-white rounded-2xl transition-all duration-300 shadow-xs" onClick={() => setIsOpen(true)}>Produits</button>
           </p>
-          <ChargementInfo title={"Client"} text={client}/>
-          <ChargementInfo title={"Transport"} text={transport} />
-          <ChargementInfo title={"Date"} text={createdAt} />
-          <ChargementInfo title={"Status"} text={statusString(status)} />
+          <ChargementInfo title="Client" text={client} />
+          <ChargementInfo title="Transport" text={transport} />
+          <ChargementInfo title="Date" text={createdAt} />
+          <ChargementInfo title="Status" text={statusString(status)} />
       </div>
+
+
   );
 };
 

@@ -86,7 +86,7 @@ export default function AddDataForm({ type, onClose }: { type: number; onClose: 
 
         <div className={"fixed w-screen h-screen top-0 left-0 flex items-center justify-center bg-black/50"}>
            <Toaster/>
-            <div className={"p-6 flex flex-col gap-4 border-1 border-stone-500 rounded-lg w-2/5 bg-stone-100 shadow-black shadow-xs"}>
+            <div className={"p-6 flex flex-col gap-4 border-1 border-stone-500 rounded-lg w-9/10 md:w-2/5 bg-stone-100 shadow-black shadow-xs"}>
                 <div className={"w-full mb-2"}>
                     <button onClick={onClose} className="border-1 border-gray-700 flex justify-center items-center w-5 h-5 p-1 hover:bg-stone-700 hover:text-white transition rounded-full transition-all duration-300">X</button>
                 </div>
@@ -94,7 +94,7 @@ export default function AddDataForm({ type, onClose }: { type: number; onClose: 
 
                     {/* Produit et transporteur */}
                     {type != 0 && (
-                        <div className={"w-full flex justify-center gap-4"}>
+                        <div className={"w-full flex justify-center gap-4 flex-col"}>
                             <input className={"border-1 border-gray-300 outline-none p-1"} placeholder={"Nom"} required={true} onChange={(e) => setNom(e.target.value)}/>
                             <button className={"hover:bg-stone-700 hover:text-white p-1 transition"} onClick={submit}>Ajouter</button>
                         </div>
@@ -104,7 +104,7 @@ export default function AddDataForm({ type, onClose }: { type: number; onClose: 
 
                     {/* Client */}
                     {type == 0 &&(
-                        <div className={"w-full flex justify-center gap-4"}>
+                        <div className={"w-full flex justify-center gap-4 flex-col"}>
                             <input className={"border-1 border-gray-300 outline-none p-1"} placeholder={"Nom"} required={true} onChange={(e) => setNom(e.target.value)}/>
                             <input className={"border-1 border-gray-300 outline-none p-1"} placeholder={"Prénom"} required={true} onChange={(e) => setPrénom(e.target.value)}/>
                             <input className={"border-1 border-gray-300 outline-none p-1"} placeholder={"Email"} required={true} onChange={(e) => setEmail(e.target.value)}/>

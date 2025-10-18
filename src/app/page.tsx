@@ -44,12 +44,12 @@ export default function Home() {
             )}
 
             <div className="w-9/10 flex flex-col h-full">
-                <div className="flex items-center justify-between  text-black">
-                    <div className={"flex justify-between items-center"}>
+                <div className="flex flex-col text-black md:flex-row md:justify-between md:items-center">
+                    <div className={"flex mb-5 md:mb-0 md:justify-between md:items-center "}>
                         <p className={"text-4xl"}>Chargements</p>
                         <p>({chargements.length})</p>
                     </div>
-                    <div className={"flex gap-5 w-2/6 justify-evenly"}>
+                    <div className={"flex gap-5 justify-evenly text-xs md:text-sm"}>
                         <button onClick={() => {
                             setdfIsOpen(true);
                             setdfType(0);

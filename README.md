@@ -14,6 +14,10 @@ WoodTrack est une application web permettant de gérer différents chargements d
 <img width="200" alt="logo WoodTrack" src="https://github.com/user-attachments/assets/b93ecc45-a76b-4315-a44c-49e317bcbd3f" />
 </p>
 
+## Accéder au projet
+
+Vous pouvez visiter WoodTracker, vous pouvez directement vous rendre sur [Vercel](https://woodtrack-git-master-karimhantaous-projects.vercel.app?_vercel_share=XziC3W1Rou6OE9OEkcklHW3APKPrF5Gi).
+
 ## Fonctionnalités
 
 * Gestion des chargements existants, avec affichage des produits liés à chaque chargement.
