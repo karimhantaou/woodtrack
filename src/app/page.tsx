@@ -32,7 +32,7 @@ export default function Home() {
                 />
             )}
 
-            <div className="w-7/10 flex flex-col h-full">
+            <div className="w-9/10 flex flex-col h-full">
                 <div className="flex items-center gap-2 text-black">
                     <p className={"text-4xl"}>Chargements</p>
                     <p>({chargements.length})</p>
