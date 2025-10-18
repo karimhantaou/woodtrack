@@ -5,13 +5,15 @@ import { Button } from "@/components/ui/button";
 import {ChargementsCard} from "@/components/chargements-card";
 import ChargementForm from "@/components/chargement-form";
 import {fetchChargements} from "@/lib/getChargements";
+import AddDataForm from "@/components/addData-form";
 
 export default function Home() {
 
     // Variable useState qui serront mis à jours
     const [chargements, setChargements] = useState<any[]>([]);
-    const [isOpen, setIsOpen] = useState(false)
-
+    const [isOpen, setIsOpen] = useState(false);
+    const [dfIsOpen, setdfIsOpen] = useState(false);
+    const [dfType, setdfType] = useState<number>(0);
 
     // Fonction qui met à jour la liste des chargements
     async function loadChargements(){
@@ -36,10 +38,31 @@ export default function Home() {
                     }}
                 />
             )}
+
+            {dfIsOpen && (
+                <AddDataForm type={dfType} onClose={() =>setdfIsOpen(false)}/>
+            )}
+
             <div className="w-9/10 flex flex-col h-full">
-                <div className="flex items-center gap-2 text-black">
-                    <p className={"text-4xl"}>Chargements</p>
-                    <p>({chargements.length})</p>
+                <div className="flex items-center justify-between  text-black">
+                    <div className={"flex justify-between items-center"}>
+                        <p className={"text-4xl"}>Chargements</p>
+                        <p>({chargements.length})</p>
+                    </div>
+                    <div className={"flex gap-5 w-2/6 justify-evenly"}>
+                        <button onClick={() => {
+                            setdfIsOpen(true);
+                            setdfType(0);
+                        }} className={"border-b-1 hover:border-black transition-all duration-100"}>+ Client</button>
+                        <button onClick={() => {
+                            setdfIsOpen(true);
+                            setdfType(1);
+                        }} className={"border-b-1 hover:border-black transition-all duration-100"}>+ Produit</button>
+                        <button onClick={() => {
+                            setdfIsOpen(true);
+                            setdfType(2);
+                        }} className={"border-b-1 hover:border-black transition-all duration-100"}>+ Transporteur</button>
+                    </div>
                 </div>
 
                 <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700"/>
