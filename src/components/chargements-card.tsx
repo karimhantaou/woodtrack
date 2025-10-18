@@ -42,8 +42,8 @@ export const ChargementsCard: React.FC<ChargementsCardProps> = ({
               <button className="w-1/2 sm:w-auto p-2 hover:bg-stone-700 border-b-1 hover:text-white rounded-2xl transition-all duration-300 shadow-xs" onClick={() => setIsOpen(true)}>Produits</button>
           </p>
           <ChargementInfo title="Client" text={client} />
-          <ChargementInfo title="Transport" text={transport} />
-          <ChargementInfo title="Date" text={createdAt} />
+          <ChargementInfo title="Transporteur" text={transport} />
+          <ChargementInfo title="Date d'ajout" text={createdAt} />
           <ChargementInfo title="Status" text={statusString(status)} />
       </div>
 
