@@ -10,7 +10,12 @@ WoodTracker est une application web permettant de gérer différents chargements
 - **Tailwind CSS** : Framework CSS pour un design rapide et responsive.
 - **shadcn/ui** : Composants UI réutilisables pour Next.js.
 
+<p align="center">
+<img width="300" alt="logo WoodTrack" src="https://github.com/user-attachments/assets/b93ecc45-a76b-4315-a44c-49e317bcbd3f" />
+</p>
+
 ## Fonctionnalités
+
 
 - Gestion des chargements existants.
 - Ajout de nouveaux chargements avec sélection de :
