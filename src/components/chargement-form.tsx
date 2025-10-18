@@ -37,9 +37,9 @@ export default function ChargementForm({onClose}: { onClose: () => void }){
 
         <div className={"fixed w-screen h-screen top-0 left-0 flex items-center justify-center bg-black/50"}>
             <Toaster />
-            <div className={"p-6 flex flex-col gap-4 border-1 border-gray-300 rounded-lg w-2/5 bg-gray-100 shadow-black shadow-xs"}>
+            <div className={"p-6 flex flex-col gap-4 border-1 border-stone-500 rounded-lg w-2/5 bg-stone-100 shadow-black shadow-xs"}>
                 <div className={"w-full"}>
-                    <button onClick={onClose} className="border-1 border-gray-700 flex justify-center items-center w-5 h-5 p-1 hover:bg-gray-700 hover:text-white transition rounded-full">X</button>
+                    <button onClick={onClose} className="border-1 border-gray-700 flex justify-center items-center w-5 h-5 p-1 hover:bg-stone-700 hover:text-white  transition-all duration-300 rounded-full">X</button>
                 </div>
                     <h2>Nouveau Chargement</h2>
                 <div>
@@ -58,7 +58,7 @@ export default function ChargementForm({onClose}: { onClose: () => void }){
                     </Select>
                 </div>
                 <div>
-                    <label>Transport:</label>
+                    <label>Transporteur:</label>
                     <Select onValueChange={(value) => setTransportId(value)}>
                         <SelectTrigger className="w-full border-none focus:ring-0 focus:ring-offset-0 bg-white text-black">
                             <SelectValue placeholder="Sélectionner un transport" />
@@ -82,7 +82,7 @@ export default function ChargementForm({onClose}: { onClose: () => void }){
                     />
                 </div>
                 <div className={"w-full flex justify-center"}>
-                    <button onClick={submit} className={"border-1 border-gray-700 pl-6 pr-6 tracking-wider w-3/4 flex justify-center items-center hover:bg-gray-700 hover:text-white rounded-2xl hover:tracking-widest transition-all duration-300"}>Créer Chargement</button>
+                    <button onClick={submit} className={"border-1 border-gray-700 pl-6 pr-6 tracking-wider w-3/4 flex justify-center items-center hover:bg-stone-700 hover:text-white rounded-2xl hover:tracking-widest transition-all duration-300"}>Créer Chargement</button>
                 </div>
             </div>
         </div>

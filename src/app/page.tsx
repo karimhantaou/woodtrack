@@ -53,19 +53,19 @@ export default function Home() {
                         <button onClick={() => {
                             setdfIsOpen(true);
                             setdfType(0);
-                        }} className={"border-b-1 hover:border-black transition-all duration-100"}>+ Client</button>
+                        }} className={"border-b-1 hover:border-black transition-all duration-300 hover:tracking-wide"}>+ Client</button>
                         <button onClick={() => {
                             setdfIsOpen(true);
                             setdfType(1);
-                        }} className={"border-b-1 hover:border-black transition-all duration-100"}>+ Produit</button>
+                        }} className={"border-b-1 hover:border-black transition-all duration-300 hover:tracking-wide"}>+ Produit</button>
                         <button onClick={() => {
                             setdfIsOpen(true);
                             setdfType(2);
-                        }} className={"border-b-1 hover:border-black transition-all duration-100"}>+ Transporteur</button>
+                        }} className={"border-b-1 hover:border-black  transition-all duration-300 hover:tracking-wide"}>+ Transporteur</button>
                     </div>
                 </div>
 
-                <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700"/>
+                <hr className="h-px my-4 bg-stone-500 border-0 dark:bg-gray-700"/>
 
                 <div className="flex items-center gap-3 mb-4 ">
 
@@ -74,7 +74,7 @@ export default function Home() {
                     <Button
                         variant="outline"
                         size="icon"
-                        className="rounded-full border-gray-700 hover:bg-gray-700 hover:text-white transition"
+                        className="rounded-full border-gray-700 hover:bg-stone-700 bg-stone-100 hover:text-white transition-all duration-300"
                         onClick={() => setIsOpen(true)}
                     >
                         +
@@ -82,7 +82,7 @@ export default function Home() {
                     <p className={"text-black"}>Nouveau chargement</p>
                 </div>
 
-                <div className="flex flex-col flex-1 overflow-auto p-2 border-2 gap-2 rounded-2xl bg-gray-200 shadow-2xs">
+                <div className="flex flex-col flex-1 overflow-auto p-2 border-2 gap-3 rounded-2xl bg-gray-200 shadow-2xs">
 
                     {chargements.length == 0 ? (
                         <p className={"w-full h-full flex justify-center items-center"}>Aucun chargement disponible.</p>

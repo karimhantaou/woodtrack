@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={myFont.className}>
       <body className={`h-screen w-screen flex flex-col bg-stone-100`}>
-        <nav className={"w-full h-1/8 text-4xl flex items-center gap-2 border-b-1 text-white bg-stone-900 shadow-2xs"}>
+        <nav className={"w-full h-1/8 text-4xl flex items-center gap-2 border-b-1 text-white bg-stone-800  shadow-2xs"}>
             <img src={"./logo.png"} alt={"Logo"} className={"h-full"}/>
             <p className={"hover:tracking-widest transition-all duration-300"}>WoodTrack</p>
         </nav>
