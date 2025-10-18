@@ -1,10 +1,12 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MultiSelect } from "@/components/MultiSelect";
 import {fetchClients} from "@/lib/getClients";
 import {fetchTransports} from "@/lib/getTransports";
 import {fetchProduits} from "@/lib/getProduits"
 import {submitForm} from "@/app/actions";
+import { Toaster } from "@/components/ui/sonner"
+import { toast } from "sonner"
 
 const clients = await fetchClients();
 const transports = await fetchTransports();
@@ -18,16 +20,23 @@ export default function ChargementForm({onClose}: { onClose: () => void }){
     const [produitIds, setProduitIds] = useState<(number)[]>([]);
 
     // Formulaire soumit
-    async function submit(){
+    async function submit() {
+        if (!clientId || !transportId || produitIds.length === 0) {
+            toast("Merci de remplir touts les champs.")
+            return;
+        }
         await submitForm(clientId, transportId, produitIds);
+        toast("Chargement ajouté !")
         onClose();
     }
 
     return(
-        <div className={"fixed w-screen h-screen top-0 left-0 flex items-center justify-center"}>
-            <div className={"navbar p-6 flex flex-col gap-4 border-2 rounded-lg w-2/5"}>
+
+        <div className={"fixed w-screen h-screen top-0 left-0 flex items-center justify-center bg-black/50"}>
+            <Toaster />
+            <div className={"p-6 flex flex-col gap-4 border-1 border-gray-300 rounded-lg w-2/5 bg-gray-100 shadow-black shadow-xs"}>
                 <div className={"w-full"}>
-                    <button onClick={onClose} className={"bg-white text-sm text-black w-fit rounded-4xl"}> X </button>
+                    <button onClick={onClose} className="border-1 border-gray-700 flex justify-center items-center w-5 h-5 p-1 hover:bg-gray-700 hover:text-white transition rounded-full">X</button>
                 </div>
                     <h2>Nouveau Chargement</h2>
                 <div>
@@ -65,11 +74,13 @@ export default function ChargementForm({onClose}: { onClose: () => void }){
                     <label>Produits:</label>
                     <MultiSelect
                         produits={produits}
-                        placeholder="Choisir des fruits..."
+                        placeholder="Sélectionner des produits"
                         onChange={(values) => setProduitIds(values)}
                     />
                 </div>
-                <button onClick={submit}>Créer Chargement</button>
+                <div className={"w-full flex justify-center"}>
+                    <button onClick={submit} className={"border-1 border-gray-700 pl-6 pr-6 tracking-wider w-3/4 flex justify-center items-center hover:bg-gray-700 hover:text-white rounded-2xl hover:tracking-widest transition-all duration-300"}>Créer Chargement</button>
+                </div>
             </div>
         </div>
     )

@@ -3,18 +3,18 @@ import React from 'react';
 interface ChargementInfoProps {
     title: string;
     text: string;
-    onAction: () => void;
+
 }
 
 export const ChargementInfo: React.FC<ChargementInfoProps> = ({
     title,
     text,
-    onAction,
+
 }) => {
     return (
             <div className={"flex items-center justify-center flex-col w-full"}>
-                <p className={"text-sm"}>{title}</p>
-                <div className={"border-2 border-gray-200 cardInfo pl-6 pr-6 tracking-wider w-3/4 flex justify-center items-center"}>
+                <p className={"text-xs"}>{title}</p>
+                <div className={"border-1 border-gray-700 pl-6 pr-6 tracking-wider w-3/4 flex justify-center items-center hover:bg-gray-700 hover:text-white rounded-2xl hover:tracking-widest transition-all duration-300"}>
                     {text}
                 </div>
             </div>

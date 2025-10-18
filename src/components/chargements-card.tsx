@@ -10,7 +10,6 @@ interface ChargementsCardProps {
   transport: string;
   createdAt: string;
   status: number;
-  onAction: () => void;
 }
 
 
@@ -29,20 +28,21 @@ export const ChargementsCard: React.FC<ChargementsCardProps> = ({
     transport,
     createdAt,
     status,
-  onAction,
 }) => {
 
 const [isOpen, setIsOpen] = useState(false)
 
   return (
-      <div className={"navbar grid grid-cols-6 items-center p-2 text-sm w-full shadow-xl/20"}>
+      <div className={"bg-white text-black grid grid-cols-5 items-center p-2 text-sm w-full shadow-xl/20 rounded-2xl"}>
           {isOpen && <Produits id={id} onClose={() => {setIsOpen(false)}}/>}
-          <p className={"w-full"}>Chargement {id}</p>
-          <button className={"card w-fit p-2"} onClick={() => setIsOpen(true)}>Produits</button>
-          <ChargementInfo title={"Client"} text={client} onAction={onAction} />
-          <ChargementInfo title={"Transport"} text={transport} onAction={onAction} />
-          <ChargementInfo title={"Date"} text={createdAt} onAction={onAction} />
-          <ChargementInfo title={"Status"} text={statusString(status)} onAction={onAction} />
+          <p className={"w-full flex items-center justify-between"}>
+              Chargement {id}
+              <button className={"w-fit p-1.5 hover:bg-gray-700 hover:text-white  rounded-2xl border-1 border-gray-700 hover:tracking-wide transition-all duration-300"} onClick={() => setIsOpen(true)}>Produits</button>
+          </p>
+          <ChargementInfo title={"Client"} text={client}/>
+          <ChargementInfo title={"Transport"} text={transport} />
+          <ChargementInfo title={"Date"} text={createdAt} />
+          <ChargementInfo title={"Status"} text={statusString(status)} />
       </div>
   );
 };
