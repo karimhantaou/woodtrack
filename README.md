@@ -24,6 +24,9 @@ WoodTrack est une application web permettant de gérer différents chargements d
 * Possibilité d'ajouter de nouveaux produits, transporteurs et clients directement dans la base de données.
 * Notifications pour informer si un ajout a réussi ou s'il y a une erreur.
 
+<p align="center">
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/666ff1a4-62d4-4938-9cc7-aa32d49e2927" />
+</p>
 ## Installation
 
 1. **Installer Node.js**  
@@ -125,6 +128,11 @@ Toutes les tables sont déjà créées et remplies, vous pouvez directement cons
 ## Structure de la base de données
 
 La base de données de **WoodTrack** comprend cinq tables principales :
+
+<p align="center">
+<img width="800" alt="supabase-schema-xzcajomohdqethsrrkqx" src="https://github.com/user-attachments/assets/606817d2-5493-478b-af23-da51edf0e3e2" />
+</p>
+
 
 ### chargements
 Contient les informations principales sur chaque chargement.  
