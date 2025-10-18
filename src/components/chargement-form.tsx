@@ -44,7 +44,7 @@ export default function ChargementForm({onClose}: { onClose: () => void }){
                     <h2>Nouveau Chargement</h2>
                 <div>
                     <label>Client:</label>
-                    <Select onValueChange={(value) => setClientId(value)}>
+                    <Select onValueChange={(value) => setClientId(Number(value))}>
                         <SelectTrigger className="w-full border-none focus:ring-0 focus:ring-offset-0 bg-white text-black">
                             <SelectValue placeholder="Sélectionner un client" />
                         </SelectTrigger>
@@ -59,7 +59,7 @@ export default function ChargementForm({onClose}: { onClose: () => void }){
                 </div>
                 <div>
                     <label>Transporteur:</label>
-                    <Select onValueChange={(value) => setTransportId(value)}>
+                    <Select onValueChange={(value) => setTransportId(Number(value))}>
                         <SelectTrigger className="w-full border-none focus:ring-0 focus:ring-offset-0 bg-white text-black">
                             <SelectValue placeholder="Sélectionner un transport" />
                         </SelectTrigger>
@@ -78,7 +78,10 @@ export default function ChargementForm({onClose}: { onClose: () => void }){
                     <MultiSelect
                         produits={produits}
                         placeholder="Sélectionner des produits"
-                        onChange={(values) => setProduitIds(values)}
+                        onChange={(values: (string | number)[]) => {
+                            // Convertir chaque élément en number
+                            setProduitIds(values.map(v => Number(v)))
+                        }}
                     />
                 </div>
                 <div className={"w-full flex justify-center"}>
