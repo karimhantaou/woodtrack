@@ -34,8 +34,8 @@ WoodTrack est une application web permettant de gérer différents chargements d
 
 2. **Cloner le dépôt**
    ```bash
-   git clone https://github.com/votre-utilisateur/WoodTrack.git
-   cd WoodTrack
+   git clone https://github.com/karimhantaou/woodtrack.git
+   cd woodtrack
     ```
 
 3. **Installer les dépendances**
